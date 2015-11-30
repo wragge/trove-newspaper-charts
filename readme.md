@@ -4,7 +4,7 @@ Script to produce some useful charts displaying the numbers of digitised newspap
 
 ##Configuration
 
-You'll need a Trove API key and a user name and key for Plotly. Once you have these, add them to ```credentials-blank.py``` and rename the file to ```credentials.py```.
+You'll need a [Trove API key](http://help.nla.gov.au/trove/building-with-trove/api) and a user name and key for [Plotly](http://plot.ly). Once you have these, add them to ```credentials-blank.py``` and rename the file to ```credentials.py```.
 
 ##Trove newspaper articles by year
 
