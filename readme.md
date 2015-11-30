@@ -12,7 +12,9 @@ You'll need a [Trove API key](http://help.nla.gov.au/trove/building-with-trove/a
 create_totals_graph()
 ```
 
-![Example chart](http://plot.ly/~wragge/303/trove-newspaper-articles-by-year.png) [View live](http://plot.ly/~wragge/303/trove-newspaper-articles-by-year/)
+![Example chart](http://plot.ly/~wragge/303/trove-newspaper-articles-by-year.png)
+
+[View live](http://plot.ly/~wragge/303/trove-newspaper-articles-by-year/)
 
 ##Trove newspaper articles by year for a given state
 
@@ -20,7 +22,9 @@ create_totals_graph()
 create_state_total_graph('Victoria')
 ```
 
-![Example chart](http://plot.ly/~wragge/285/trove-newspaper-articles-victoria.png) [View live](http://plot.ly/~wragge/285/trove-newspaper-articles-victoria/)
+![Example chart](http://plot.ly/~wragge/285/trove-newspaper-articles-victoria.png)
+
+[View live](http://plot.ly/~wragge/285/trove-newspaper-articles-victoria/)
 
 ##Trove newspaper articles by year for all states
 
@@ -28,4 +32,6 @@ create_state_total_graph('Victoria')
 create_state_totals_graph()
 ```
 
-![Example chart](http://plot.ly/~wragge/300/trove-newspaper-articles-by-state.png) [View live](http://plot.ly/~wragge/300/trove-newspaper-articles-by-state/)
+![Example chart](http://plot.ly/~wragge/300/trove-newspaper-articles-by-state.png)
+
+[View live](http://plot.ly/~wragge/300/trove-newspaper-articles-by-state/)
