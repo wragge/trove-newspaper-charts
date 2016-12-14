@@ -1,8 +1,9 @@
 import json
-from urllib2 import urlopen
+from urllib2 import urlopen, HTTPError, Request
 import time
 import csv
 import datetime
+from utilities import retry
 
 import plotly.plotly as py
 from plotly.graph_objs import *
@@ -27,13 +28,33 @@ STATES = {
 }
 
 
+class ServerError(Exception):
+    pass
+
+
+@retry(ServerError, tries=10, delay=1)
+def get_url(url):
+    ''' Try to retrieve the supplied url.'''
+    req = Request(url)
+    try:
+        response = urlopen(req)
+    except HTTPError as e:
+        if e.code == 503 or e.code == 504 or e.code == 500:
+            raise ServerError("The server didn't respond")
+        else:
+            raise
+    else:
+        return response
+
+
 def get_titles_for_state(state):
     '''
     Gets a list of newspaper title ids for the given state.
     '''
     titles = []
     url = 'http://api.trove.nla.gov.au/newspaper/titles?state={}&encoding=json&key={}'.format(state, TROVE_KEY)
-    results = json.load(urlopen(url))
+    response = get_url(url)
+    results = json.load(response)
     for title in results['response']['records']['newspaper']:
         titles.append(title['id'])
     return titles
@@ -64,7 +85,8 @@ def get_state_totals(state, decade):
             end_year=(decade * 10) + 9
         )
         print current_url
-        results = json.load(urlopen(current_url))
+        response = get_url(current_url)
+        results = json.load(response)
         try:
             for facet in reversed(results['response']['zone'][0]['facets']['facet']['term']):
                 try:
@@ -168,7 +190,8 @@ def create_totals_graph():
             end_year=(decade * 10) + 9
         )
         print current_url
-        results = json.load(urlopen(current_url))
+        response = get_url(current_url)
+        results = json.load(response)
         try:
             for facet in reversed(results['response']['zone'][0]['facets']['facet']['term']):
                 x.append(int(facet['display']))
