@@ -19,7 +19,7 @@ create_totals_graph()
 ##Trove newspaper articles by year for a given state
 
 ```
-create_state_total_graph('Victoria')
+create_state_total_graph('vic')
 ```
 
 ![Example chart](http://plot.ly/~wragge/285/trove-newspaper-articles-victoria.png)
